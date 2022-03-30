@@ -29,6 +29,7 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
+      - run: npm install ajv@^8.9.0 --save
 
       - name: Deploy to Server 1
         uses: easingthemes/ssh-deploy@main
