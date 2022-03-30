@@ -22,16 +22,16 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-    - name: Build images and run container
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST_DNS }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        envs: GITHUB_SHA
-        script: |
-          docker login
-          docker stop posts_node2
-          docker rm posts_node2
-          docker build -t posts_node2 .
-          docker run -v /home/ubuntu/proyectos/posts_node:/home/node/app --name posts_node2 -p 80:3000 posts_node2
+      - name: Build images and run container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          envs: GITHUB_SHA
+          script: |
+            docker login
+            docker stop posts_node2
+            docker rm posts_node2
+            docker build -t posts_node2 .
+            docker run -v /home/ubuntu/proyectos/posts_node:/home/node/app --name posts_node2 -p 80:3000 posts_node2
