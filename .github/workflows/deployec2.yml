@@ -22,6 +22,11 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-      - name: stop docker
-        run: echo '::docker stop 4ced82fc86dc'
-        id: random-stopdocker
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: docker stop 4ced82fc86dc
