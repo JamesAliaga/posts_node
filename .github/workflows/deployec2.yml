@@ -22,7 +22,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-    steps:
+
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
@@ -30,4 +30,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.EC2_SSH_KEY }}
           port: 22
-          script: docker stop 4ced82fc86dc
+          script: whoami
