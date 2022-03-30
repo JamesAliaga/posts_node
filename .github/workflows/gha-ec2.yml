@@ -46,3 +46,4 @@ jobs:
           envs: GITHUB_SHA
           script: |
             docker build -t posts_node_2 /home/ubuntu/proyectos/posts_node/
+            docker run -d -v /home/ubuntu/proyectos/posts_node:/home/node/app --name posts_node2 -p 80:3000 posts_node_2
