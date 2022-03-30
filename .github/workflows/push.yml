@@ -19,3 +19,14 @@ jobs:
         tag_with_ref: true
         tag_with_sha: true
         tags: ${{ github.sha }}
+    - name: Docker Pull and run from hub
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_DNS }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        envs: GITHUB_SHA
+        scripts: |
+          docker login
+          docker pull ${{ secrets.DOCKER_USERNAME }}/posts_node:main
+          docker run -it -v //home/ubuntu/proyectos/posts_node:/home/node/app --name posts_node -p 80:3000 node:14
