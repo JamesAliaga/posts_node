@@ -31,4 +31,3 @@ jobs:
           docker stop posts_node
           docker rm posts_node
           docker run -v /home/ubuntu/proyectos/posts_node:/home/node/app --name posts_node -p 80:3000 ${{ secrets.DOCKER_USERNAME }}/posts_node:main
-          docker exec -T -w /home/node/app posts_node npm install
