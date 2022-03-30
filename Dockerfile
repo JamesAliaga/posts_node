@@ -1,9 +1,9 @@
 FROM node:14
 
-RUN mkdir /home/node/app 
-RUN cd /home/node/app
+# RUN mkdir /home/node/app 
+# RUN cd /home/node/app
 
-RUN npm install
+# RUN npm install
 
 #EXPOSE 3000
 
