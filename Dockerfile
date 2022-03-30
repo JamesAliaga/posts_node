@@ -2,4 +2,6 @@ FROM node:14
 
 WORKDIR /home/node/app
 
-CMD npm run start:dev
+#RUN npm install
+
+#CMD npm run start:dev
