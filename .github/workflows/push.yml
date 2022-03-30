@@ -31,6 +31,6 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/posts_node:main
           docker stop posts_node
           docker rm posts_node
-          docker run -v //home/ubuntu/proyectos/posts_node:/home/node/app --name posts_node -p 80:3000 node:14
-          docker exec posts_node npm install
+          docker run -v /home/ubuntu/proyectos/posts_node:/home/node/app --name posts_node -p 80:3000 node:14
+          docker exec -d -w /home/node/app posts_node npm install
           docker exec -d -w /home/node/app posts_node npm run start:dev
