@@ -22,17 +22,22 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descripción
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository
+- Proyecto realizado con [Nest](https://github.com/nestjs/nest) para consumir una API y mostrar los datos retornados.
+- Despliegue configurado mediante github actions bajo los siguientes pasos:
+  - Actualizar el codigo en instancia EC2 de AWS
+  - Instalar dependencias del proyecto
+  - Generar imagen de Docker a partir de un Dockerfile
+  - Correr un contenedor en la instancia con la imagen creada en el paso anterior
 
-## Installation
+## Instalación
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Ejecutar la aplicación
 
 ```bash
 # development
@@ -45,28 +50,12 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
+## Consideraciones
+- Puerto de escucha por defecto dentro del contenedor es 3000. La github action encargada de ejecutar el docker run en el cloud publica el puerto 80 hacia el host y 3000 hacia el contenedor.
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+#Ejemplo docker run
+docker run -it -d -v <path_to_proyect>:/home/node/app --name <container_name> -p 80:3000 <imagen>
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
